@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Login</title>
+    <link rel="stylesheet" href="./style.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        nav {
+            background-color: #333;
+            color: #fff;
+            padding: 10px 0;
+            text-align: center;
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+        }
+
+        nav ul li {
+            margin: 0 15px;
+        }
+
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .form-container {
+            background-color: #fff;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+            max-width: 400px;
+            margin: 100px auto;
+            text-align: center;
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        .form-container h2 {
+            margin-bottom: 30px;
+            color: #333;
+            font-size: 2rem;
+        }
+
+        .form-container input[type="email"],
+        .form-container input[type="password"] {
+            width: 100%;
+            padding: 12px 15px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+
+        .form-container button[type="submit"] {
+            background-color: #0073e6;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            font-size: 1rem;
+            margin-top: 20px;
+        }
+
+        .form-container button[type="submit"]:hover {
+            background-color: #005bb5;
+        }
+
+        .form-container p {
+            margin-top: 20px;
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        .form-container a {
+            color: #0073e6;
+            text-decoration: none;
+        }
+
+        .form-container a:hover {
+            text-decoration: underline;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px 0;
+            background-color: #333;
+            color: #fff;
+            margin-top: auto;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="./index.html">Home</a></li>
+            <li><a href="./users.html">Users</a></li>
+            <li><a href="./ngos.html">NGOs</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+
+    <div class="form-container">
+        <h2>User Login</h2>
+        <form id="user-login-form">
+            <input type="email" placeholder="Email" required>
+            <input type="password" placeholder="Password" required>
+            <button type="submit">Login</button>
+        </form>
+        <p>Not registered? <a href="./userRegister.html">Create an account</a></p>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 NGO Collaboration. All rights reserved.</p>
+    </footer>
+
+    <script>
+        document.getElementById('user-login-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            // Simulate successful login (normally, you'd send data to the backend)
+            alert('Login Successful! Redirecting to your dashboard.');
+            
+            // Redirect to the user dashboard
+            window.location.href = "user-dashboard.html";
+        });
+    </script>
+</body>
+</html>

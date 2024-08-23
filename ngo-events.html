@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NGO Event Management</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="./index.html">Home</a></li>
+            <li><a href="./users.html">Users</a></li>
+            <li><a href="./ngos.html">NGOs</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+
+    <header>
+        <h2>NGO Events</h2>
+    </header>
+
+    <section id="eventForm">
+        <h3>Add New Event</h3>
+        <form id="add-event-form">
+            <input type="text" id="eventName" placeholder="Event Name" required>
+            <textarea id="eventDescription" placeholder="Event Description" required></textarea>
+            <input type="date" id="eventDate" required>
+            <input type="file" id="eventImage" accept="image/*">
+            <input type="file" id="eventVideo" accept="video/*">
+            <button type="submit">Add Event</button>
+        </form>
+    </section>
+
+    <section id="eventList">
+        <h3>Current Events</h3>
+        <div id="events" class="event-grid">
+            <!-- Events will be dynamically added here -->
+        </div>
+    </section>
+
+    <script>
+        const eventList = document.getElementById('events');
+
+        document.getElementById('add-event-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            const eventName = document.getElementById('eventName').value;
+            const eventDescription = document.getElementById('eventDescription').value;
+            const eventDate = document.getElementById('eventDate').value;
+            const eventImage = document.getElementById('eventImage').files[0];
+            const eventVideo = document.getElementById('eventVideo').files[0];
+            const eventImageURL = eventImage ? URL.createObjectURL(eventImage) : null;
+            const eventVideoURL = eventVideo ? URL.createObjectURL(eventVideo) : null;
+
+            // Create a new event card
+            const eventCard = document.createElement('div');
+            eventCard.className = 'event-card';
+            eventCard.innerHTML = `
+                <h4>${eventName}</h4>
+                <p>${eventDescription}</p>
+                <p><strong>Date:</strong> ${eventDate}</p>
+                ${eventImageURL ? `<img src="${eventImageURL}" alt="${eventName}">` : ''}
+                ${eventVideoURL ? `<video controls><source src="${eventVideoURL}" type="video/mp4">Your browser does not support the video tag.</video>` : ''}
+                <a href="#" class="event-link">View Details</a>
+            `;
+
+            // Append the new event card to the event list
+            eventList.appendChild(eventCard);
+
+            // Clear the form
+            document.getElementById('add-event-form').reset();
+        });
+    </script>
+</body>
+</html>
